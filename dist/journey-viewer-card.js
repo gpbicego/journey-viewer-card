@@ -6923,7 +6923,7 @@ const ft = /* @__PURE__ */ Fr(Ur), Ve = {
   opacity: 0.9
 }, We = {
   openstreetmap: {
-    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     attributionShort: '© <a href="https://www.openstreetmap.org/copyright">OSM</a>'
   },
   "carto-positron": {
@@ -7037,7 +7037,8 @@ class Gr {
     });
     return u.attributionControl.setPrefix(!1), this.tiles = ft.tileLayer(l.url, {
       attribution: l.attributionShort,
-      maxZoom: 19
+      maxZoom: 19,
+      referrerPolicy: "strict-origin-when-cross-origin"
     }).addTo(u), this.map = u, this.deferTimeout(() => u.invalidateSize()), this.deferFrame(() => u.invalidateSize()), u;
   }
   /** Update theme darkness. When that changes the effective tile provider
@@ -7053,7 +7054,8 @@ class Gr {
     const a = We[l] ?? We.openstreetmap;
     this.tiles.remove(), this.tiles = ft.tileLayer(a.url, {
       attribution: a.attributionShort,
-      maxZoom: 19
+      maxZoom: 19,
+      referrerPolicy: "strict-origin-when-cross-origin"
     }).addTo(this.map);
   }
   /** Replace all trip-specific layers with this trip's data. */

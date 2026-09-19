@@ -12,7 +12,7 @@ const TILE_PROVIDERS: Record<
   { url: string; attributionShort: string }
 > = {
   openstreetmap: {
-    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     attributionShort:
       '© <a href="https://www.openstreetmap.org/copyright">OSM</a>',
   },
@@ -218,6 +218,7 @@ export class TripMap {
     this.tiles = L.tileLayer(provider.url, {
       attribution: provider.attributionShort,
       maxZoom: 19,
+      referrerPolicy: "strict-origin-when-cross-origin",
     }).addTo(m);
     this.map = m;
 
@@ -248,6 +249,7 @@ export class TripMap {
     this.tiles = L.tileLayer(provider.url, {
       attribution: provider.attributionShort,
       maxZoom: 19,
+      referrerPolicy: "strict-origin-when-cross-origin",
     }).addTo(this.map);
   }
 
